@@ -339,10 +339,10 @@ body, html {
 
 @font-face {
     font-family: 'pleasant';
-    src: url('fonts/pleasant\ feelings.otf.otf') format('opentype'), 
-    url('fonts/pleasant\ feelings.ttf.ttf') format('truetype'), 
-    url('fonts/autography.otf.otf') format(opentype), 
-    url('fonts/brandon\ grotesque\ light.otf.otf') format(opentype);
+    src: url('../fonts/pleasant\ feelings.otf') format('opentype'), 
+    url('../fonts/pleasant\ feelings.ttf') format('truetype'), 
+    url('../fonts/autography.otf.otf') format(opentype), 
+    url('../fonts/brandon\ grotesque\ light.otf') format(opentype);
     font-weight: normal;
     font-style: normal;
 }

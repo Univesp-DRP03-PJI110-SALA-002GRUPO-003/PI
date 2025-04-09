@@ -1,0 +1,29 @@
+{
+  "name": "pi",
+  "version": "1.0.0",
+  "description": "DRP03-PJI110-SALA-002GRUPO-003",
+  "homepage": "https://github.com/Univesp-DRP03-PJI110-SALA-002GRUPO-003/PI#readme",
+  "bugs": {
+    "url": "https://github.com/Univesp-DRP03-PJI110-SALA-002GRUPO-003/PI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Univesp-DRP03-PJI110-SALA-002GRUPO-003/PI.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "express": "^5.1.0",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
