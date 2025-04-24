@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import './components/navbar/navbar.css';
 import Navbar from './components/navbar/navbar';
 
