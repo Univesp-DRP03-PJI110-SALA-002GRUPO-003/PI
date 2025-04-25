@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "../App";
 import HomeAdmin from "../pages/Admin/Home/home";
 import PublicRoute from "./public.routes";
+import About from "../pages/Admin/About/About";
 
 export default function AppRoutes() {
   return (
@@ -14,6 +15,12 @@ export default function AppRoutes() {
         <Route path="/admin_home" element={
           <PublicRoute>
             <HomeAdmin />
+          </PublicRoute>
+        }/>
+
+<Route path="/admin_about" element={
+          <PublicRoute>
+            <About />
           </PublicRoute>
         }/>
 

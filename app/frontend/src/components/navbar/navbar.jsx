@@ -6,7 +6,7 @@ import './navbar.css';
 const Navbar = () => {
 
   return (
-    <>
+    <nav>
       <div className="navbar-container">
 
         <nav className="main-navbar">
@@ -16,7 +16,7 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-    </>
+    </nav>
   );
 };
 

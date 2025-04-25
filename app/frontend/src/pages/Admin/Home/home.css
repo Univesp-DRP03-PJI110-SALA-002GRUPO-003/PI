@@ -1,14 +1,6 @@
 #admin-home {
 
-  .admin-content {
-    display: flex;
-  }
-
   .admin-form-background {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     width: 100%;
     height: auto;
 
@@ -16,56 +8,15 @@
   }
 
   .headline-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 80%;
+    width: 100%;
+    height: 100%;
     padding: 8px;
   }
-/* 
-  .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: auto;
-  } */
-
-  /* .input-content-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-
-    width: 100%;
-    height: auto;
-
-    padding: 8px;
-  } */
-
-  /* .input-estilization-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-
-    width: 100%;
-    height: auto;
-
-    padding: 8px;
-  } */
 
   .headline-image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    width: 20%;
-    height: auto;
-    padding: 4px
+    width: 100%;
+    height: 100%;
+    padding: 8px
   }
 
 }

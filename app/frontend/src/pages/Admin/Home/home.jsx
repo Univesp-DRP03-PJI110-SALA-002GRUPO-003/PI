@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import { letterAlign, letterCollors, letterFamily, letterSeize, letterWeight } from '../Mocks/Estilization';
+
 import "./home.css";
 
 const AdminHome = () => {
@@ -17,7 +20,7 @@ const AdminHome = () => {
     <div id="admin-home" className="admin-content container">
 
       <form
-        className="admin-form-background"
+        className="admin-form-background row aling-items-center justify-content-center"
 
         onKeyDown={(e) => {
           if (e.key === "Enter") {
@@ -29,75 +32,272 @@ const AdminHome = () => {
       // onSubmit={handleSubmit(onSubmit)}
       >
 
-        <div className="headline-container">
-          <div className='row aling-items-center justify-content-start w-100 container-border'>
+        <section className="col-9">
+          <div className='headline-image-container'>
 
-            <div className='col-12'>
-              <span className='input-title'>Headline</span>
+            <div className='row aling-items-center justify-content-start w-100 container-border'>
+
+              <div className='col-12'>
+                <span className='input-title'>Headline</span>
+              </div>
+
+              <div className='col-12 mb-3'>
+                <input
+                  id="text-input"
+                  className=''
+                  type="text"
+                  placeholder='Título da headline'
+                  value={""}
+                // onChange={}
+                ></input>
+              </div>
+
+              <div className='col-12'>
+                <span className='input-title'>Estilização</span>
+              </div>
+
+              <div className='col-12 mb-3'>
+                <div className='row aling-items-center'>
+
+                  <div className='col-md-6 col-lg-3 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione uma fonte</option>
+                      {letterFamily.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.family}
+                          >
+                            {item.family}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-2 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione um tamanho</option>
+                      {letterSeize.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.font}
+                          >
+                            {item.font}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-3 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione um peso</option>
+                      {letterWeight.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.weight}
+                          >
+                            {item.weight}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-2 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione um alinhamento</option>
+                      {letterAlign.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.align}
+                          >
+                            {item.align}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-2 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione uma cor</option>
+                      {letterCollors.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.color}
+                          >
+                            {item.color}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className='col-12 mb-3'>
-              <input
-                id="text-input"
-                className=''
-                type="text"
-                placeholder='Título da headline'
-                value={""}
-              // onChange={}
-              ></input>
-            </div>
+            <div className='row aling-items-center justify-content-start w-100 my-4 container-border'>
 
-            <div className='col-12'>
-              <span className='input-title'>Estilização</span>
-            </div>
+              <div className='col-12'>
 
-            <div className='col-12 mb-3'>
-              <div className='row aling-items-center'>
+                <span className='input-title'>Subtítulo</span>
 
-                <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Cor da fonte'
-                  ></input>
-                </div>
+                <textarea
+                  id="textarea-input"
+                  className=''
+                  placeholder='Subtítulo'
+                  value={""}
+                />
+              </div>
 
-                <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Tamanho da fonte'
-                  ></input>
-                </div>
+              <div className='col-12'>
+                <span className='input-title'>Estilização</span>
+              </div>
 
-                <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Estilo da fonte'
-                  ></input>
-                </div>
+              <div className='col-12 mb-3'>
+                <div className='row aling-items-center'>
 
-                <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Alinhamento de texto'
-                  ></input>
+                  <div className='col-md-6 col-lg-3 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione uma fonte</option>
+                      {letterFamily.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.family}
+                          >
+                            {item.family}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-2 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione um tamanho</option>
+                      {letterSeize.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.font}
+                          >
+                            {item.font}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-3 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione um peso</option>
+                      {letterWeight.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.weight}
+                          >
+                            {item.weight}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-2 col-12'>
+                    <select
+                      id="text-input"
+                    >
+                      <option value='' disabled selected>Selecione um alinhamento</option>
+                      {letterAlign.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.align}
+                          >
+                            {item.align}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
+
+                  <div className='col-md-6 col-lg-2 col-12'>
+                    <select
+                      id="select-input"
+                    >
+                      <option value='' disabled selected>Selecione uma cor</option>
+                      {letterCollors.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.color}
+                          >
+                            {item.color}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <div className='row aling-items-center justify-content-start w-100 my-4 container-border'>
+        <section className="col-3">
+          <div className="headline-image-container">
 
-            <div className='col-12'>
+            <div id="input-image">
+              {imagePreview && (
+                <div className="image-preview">
+                  <img src={imagePreview} alt="Preview" />
+                </div>
+              )}
 
-              <span className='input-title'>Subtítulo</span>
+              <label
+                htmlFor="imageUpload"
+                className="image-upload-button"
+              >
+                Alterar Imagem
+              </label>
 
-              <textarea
-                id="textarea-input"
-                className=''
-                placeholder='Subtítulo'
-                value={""}
+              <input
+                type="file"
+                id="imageUpload"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={handleImageChange}
               />
             </div>
+          </div>
+        </section>
+
+        <section className='col-12'>
+          <div className='row aling-items-center justify-content-start w-100 p-2 container-border'>
 
             <div className='col-12'>
               <span className='input-title'>Estilização</span>
@@ -106,63 +306,28 @@ const AdminHome = () => {
             <div className='col-12 mb-3'>
               <div className='row aling-items-center'>
 
-              <div className='col-md-6 col-lg-3 col-12'>
-              <input
-                    id="text-input"
-                    placeholder='Cor da fonte'
-                  ></input>
-                </div>
-
                 <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Tamanho da fonte'
-                  ></input>
-                </div>
-
-                <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Estilo da fonte'
-                  ></input>
-                </div>
-
-                <div className='col-md-6 col-lg-3 col-12'>
-                  <input
-                    id="text-input"
-                    placeholder='Alinhamento de texto'
-                  ></input>
+                  <select
+                    id="select-input"
+                  >
+                    <option value='' disabled selected>Selecione uma cor de fundo</option>
+                    {letterCollors.map((item, index) => {
+                      return (
+                        <option
+                          key={index}
+                          value={item.color}
+                        >
+                          {item.color}
+                        </option>
+                      )
+                    })}
+                  </select>
                 </div>
               </div>
             </div>
+
           </div>
-        </div>
-
-        <div className="headline-image-container">
-
-          <div id="input-image" className="image-upload-container">
-            {imagePreview && (
-              <div className="image-preview">
-                <img src={imagePreview} alt="Preview" />
-              </div>
-            )}
-
-            <label htmlFor="imageUpload" className="image-upload-button">
-              <i className="icon-edit-05" />
-              <span>Alterar Imagem</span>
-            </label>
-
-            <input
-              type="file"
-              id="imageUpload"
-              accept="image/*"
-              style={{ display: 'none' }}
-              onChange={handleImageChange}
-            />
-          </div>
-
-
-        </div>
+        </section>
       </form>
     </div>
 
