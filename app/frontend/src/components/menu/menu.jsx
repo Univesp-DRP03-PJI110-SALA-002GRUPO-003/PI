@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./menu.css";
+import "./menu.scss";
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,10 +10,10 @@ const Menu = () => {
   const user = { name: "usuario" }; // Placeholder: substitua com dados reais
 
   const items = [
-    { id: 1, text: "Home", onClick: () => navigate("/") },
-    { id: 2, text: "Sobre", onClick: () => navigate("/sobre") },
-    { id: 3, text: "Produtos", onClick: () => navigate("/produtos") },
-    { id: 4, text: "Perfil", onClick: () => navigate(`/profile/nome`) },
+    { id: 1, text: "Home", onClick: () => navigate("/admin_home") },
+    { id: 2, text: "Sobre", onClick: () => navigate("/admin_about") },
+    { id: 3, text: "Produtos", onClick: () => navigate("/admin_products") },
+    { id: 4, text: "Perfil", onClick: () => navigate(`/admin_profile`) },
     { id: 5, text: "Sair", onClick: () => navigate("/") },
   ];
 

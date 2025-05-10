@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 import Routes from './router/app.routes'
 
 import "../styles/input.scss";
-import "../styles/text.css";
-import "../styles/container.css";
+import "../styles/text.scss";
+import "../styles/container.scss";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

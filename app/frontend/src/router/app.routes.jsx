@@ -4,6 +4,8 @@ import App from "../App";
 import HomeAdmin from "../pages/Admin/Home/home";
 import PublicRoute from "./public.routes";
 import About from "../pages/Admin/About/About";
+import Profile from "../pages/Admin/Profile/Profile";
+import Products from "../pages/Admin/Products/Products";
 
 export default function AppRoutes() {
   return (
@@ -21,6 +23,18 @@ export default function AppRoutes() {
 <Route path="/admin_about" element={
           <PublicRoute>
             <About />
+          </PublicRoute>
+        }/>
+
+<Route path="/admin_profile" element={
+          <PublicRoute>
+            <Profile />
+          </PublicRoute>
+        }/>
+
+<Route path="/admin_products" element={
+          <PublicRoute>
+            <Products />
           </PublicRoute>
         }/>
 
