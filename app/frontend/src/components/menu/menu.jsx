@@ -7,7 +7,7 @@ const Menu = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const user = { name: "usuario" }; // Placeholder: substitua com dados reais
+  const user = { name: "usuario" };
 
   const items = [
     { id: 1, text: "Home", onClick: () => navigate("/admin_home") },

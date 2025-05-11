@@ -367,7 +367,7 @@ const Products = () => {
         <section className='col-12 mb-2'>
           <div className='row aling-items-center justify-content-start p-3 container-border'>
             <div className='col-12 my-4'>
-              <span className='section-title'>Produto 01</span>
+              <span className='section-title'>Produto 02</span>
             </div>
 
             <div className='col-12'>

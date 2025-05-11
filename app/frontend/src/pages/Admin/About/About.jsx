@@ -4,14 +4,6 @@ import "./About.scss";
 
 const About = () => {
   const [aboutData, setAboutData] = useState({
-    illustration: {
-      url: '',
-      style: {
-        height: '',
-        width: '',
-        align: ''
-      }
-    },
     headline: {
       title: '',
       style: {
@@ -30,6 +22,14 @@ const About = () => {
         fontWeight: '',
         textAlign: '',
         color: '#000000'
+      }
+    },
+    illustration: {
+      url: '',
+      style: {
+        height: '',
+        width: '',
+        align: ''
       }
     }
   });

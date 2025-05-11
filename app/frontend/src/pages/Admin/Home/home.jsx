@@ -24,7 +24,15 @@ const AdminHome = () => {
         color: '#000000'
       }
     },
-    illustration: {
+    background_image: {
+      url: '',
+      style: {
+        height: '',
+        width: '',
+        align: ''
+      }
+    },
+    logo: {
       url: '',
       style: {
         height: '',
@@ -36,10 +44,10 @@ const AdminHome = () => {
 
   const handleChange = (e, section, subSection = null, styleType = null) => {
     const { name, value } = e.target;
-    
+
     setHomeData(prev => {
-      const newData = {...prev};
-      
+      const newData = { ...prev };
+
       if (styleType) {
         newData[section][subSection][styleType] = value;
       } else if (subSection) {
@@ -47,7 +55,7 @@ const AdminHome = () => {
       } else {
         newData[section][name] = value;
       }
-      
+
       return newData;
     });
   };
@@ -93,7 +101,7 @@ const AdminHome = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -106,7 +114,7 @@ const AdminHome = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -119,7 +127,7 @@ const AdminHome = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -132,7 +140,7 @@ const AdminHome = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <input
             id="text-input"
@@ -180,7 +188,7 @@ const AdminHome = () => {
 
             <StyleControls section="headline" styleType="style" />
 
-            <hr className='my-4'/>
+            <hr className='my-4' />
 
             {/* Seção Subtítulo */}
             <div className='col-12 pb-4'>
@@ -206,7 +214,7 @@ const AdminHome = () => {
 
             <StyleControls section="subtitle" styleType="style" />
 
-            <hr className='my-4'/>
+            <hr className='my-4' />
 
             {/* Seção Ilustração */}
             <div className='col-12 mb-4'>

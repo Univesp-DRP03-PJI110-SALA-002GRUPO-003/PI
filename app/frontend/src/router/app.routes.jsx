@@ -6,6 +6,7 @@ import PublicRoute from "./public.routes";
 import About from "../pages/Admin/About/About";
 import Profile from "../pages/Admin/Profile/Profile";
 import Products from "../pages/Admin/Products/Products";
+import Site from "../pages/Public/site";
 
 export default function AppRoutes() {
   return (
@@ -37,6 +38,13 @@ export default function AppRoutes() {
             <Products />
           </PublicRoute>
         }/>
+
+<Route path="/app" element={
+          <PublicRoute>
+            <Site />
+          </PublicRoute>
+        }/>
+
 
         </Route>
       </Routes>

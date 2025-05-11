@@ -249,7 +249,7 @@ const Profile = () => {
             <hr className='my-4'/>
 
             {/* Seção Contatos */}
-            <div className='col-12 my-4'>
+            <div className='col-12 mb-4'>
               <span className='section-title'>Contatos</span>
             </div>
 

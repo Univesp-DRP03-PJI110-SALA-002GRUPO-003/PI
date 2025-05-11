@@ -15,10 +15,6 @@ function App() {
       <div className="App">
         <Outlet />
       </div>
-
-      <footer>
-        <span> footer</span>
-      </footer>
     </div>
   );
 }
