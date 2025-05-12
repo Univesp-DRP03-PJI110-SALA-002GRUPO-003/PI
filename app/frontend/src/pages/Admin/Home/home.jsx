@@ -4,6 +4,9 @@ import "./home.scss";
 
 const AdminHome = () => {
   const [homeData, setHomeData] = useState({
+    section: {
+      background_color: '#ffff',
+    },
     headline: {
       title: '',
       style: {
@@ -26,11 +29,6 @@ const AdminHome = () => {
     },
     background_image: {
       url: '',
-      style: {
-        height: '',
-        width: '',
-        align: ''
-      }
     },
     logo: {
       url: '',
@@ -161,10 +159,30 @@ const AdminHome = () => {
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
       >
         <section className='col-12'>
-          <div className='row aling-items-center justify-content-start p-3 container-border'>
+          <div
+            className='row aling-items-center justify-content-start p-3 container-border'
+            style={{
+              backgroundColor: homeData.section.background_color
+            }}
+          >
+
+            <div className='col-12'>
+              <span className='section-title'>Cor de fundo da sessão</span>
+            </div>
+
+            <div className='col-1 mb-3'>
+              <input
+                id="text-input"
+                type="color"
+                value={homeData.section.background_color}
+                onChange={(e) => handleChange(e, 'section', 'background_color')}
+              />
+            </div>
+
+            <hr className='my-4' />
 
             {/* Seção Headline */}
-            <div className='col-12 my-4'>
+            <div className='col-12 mb-4'>
               <span className='section-title'>Headline</span>
             </div>
 
@@ -218,11 +236,11 @@ const AdminHome = () => {
 
             {/* Seção Ilustração */}
             <div className='col-12 mb-4'>
-              <span className='section-title'>Ilustração</span>
+              <span className='section-title'>Banner</span>
             </div>
 
             <div className='col-12'>
-              <span className='input-title'>URL da ilustração</span>
+              <span className='input-title'>URL do banner</span>
             </div>
 
             <div className='col-12 mb-3'>
@@ -230,8 +248,26 @@ const AdminHome = () => {
                 id="text-input"
                 type="text"
                 placeholder='Url pública'
-                value={homeData.illustration.url}
-                onChange={(e) => handleChange(e, 'illustration', 'url')}
+                value={homeData.background_image.url}
+                onChange={(e) => handleChange(e, 'background_image', 'url')}
+              />
+            </div>
+
+            <div className='col-12 mb-4'>
+              <span className='section-title'>Logo</span>
+            </div>
+
+            <div className='col-12'>
+              <span className='input-title'>URL do logo</span>
+            </div>
+
+            <div className='col-12 mb-3'>
+              <input
+                id="text-input"
+                type="text"
+                placeholder='Url pública'
+                value={homeData.logo.url}
+                onChange={(e) => handleChange(e, 'logo', 'url')}
               />
             </div>
 
@@ -257,8 +293,8 @@ const AdminHome = () => {
                     type="number"
                     step={1}
                     placeholder='0'
-                    value={homeData.illustration.style.height}
-                    onChange={(e) => handleChange(e, 'illustration', 'style', 'height')}
+                    value={homeData.logo.style.height}
+                    onChange={(e) => handleChange(e, 'logo', 'style', 'height')}
                   />
                 </div>
 
@@ -268,16 +304,16 @@ const AdminHome = () => {
                     type="number"
                     step={1}
                     placeholder='0'
-                    value={homeData.illustration.style.width}
-                    onChange={(e) => handleChange(e, 'illustration', 'style', 'width')}
+                    value={homeData.logo.style.width}
+                    onChange={(e) => handleChange(e, 'logo', 'style', 'width')}
                   />
                 </div>
 
                 <div className='col-4'>
                   <select
                     id="text-input"
-                    value={homeData.illustration.style.align}
-                    onChange={(e) => handleChange(e, 'illustration', 'style', 'align')}
+                    value={homeData.logo.style.align}
+                    onChange={(e) => handleChange(e, 'logo', 'style', 'align')}
                   >
                     <option value='' disabled>Selecione</option>
                     {letterAlign.map((item, index) => (

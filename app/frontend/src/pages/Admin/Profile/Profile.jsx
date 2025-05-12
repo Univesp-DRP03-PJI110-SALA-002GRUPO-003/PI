@@ -4,6 +4,17 @@ import "./Profile.scss";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
+    section: {
+      title: '',
+      background_color: '#ffff',
+      style: {
+        fontFamily: '',
+        fontSize: '',
+        fontWeight: '',
+        textAlign: '',
+        color: '#000000'
+      }
+    },
     company: {
       name: '',
       socialMedia: {
@@ -39,10 +50,10 @@ const Profile = () => {
 
   const handleChange = (e, section, subSection = null, styleType = null) => {
     const { name, value } = e.target;
-    
+
     setProfileData(prev => {
-      const newData = {...prev};
-      
+      const newData = { ...prev };
+
       if (styleType) {
         newData[section][subSection][styleType] = value;
       } else if (subSection) {
@@ -50,7 +61,7 @@ const Profile = () => {
       } else {
         newData[section][name] = value;
       }
-      
+
       return newData;
     });
   };
@@ -96,7 +107,7 @@ const Profile = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -109,7 +120,7 @@ const Profile = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -122,7 +133,7 @@ const Profile = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -135,7 +146,7 @@ const Profile = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <input
             id="text-input"
@@ -156,10 +167,46 @@ const Profile = () => {
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
       >
         <section className='col-12'>
-          <div className='row aling-items-center justify-content-start p-3 container-border'>
+          <div
+            className='row aling-items-center justify-content-start p-3 container-border'
+            style={{
+              backgroundColor: profileData.section.background_color
+            }}
+          >
+
+            <div className='col-12'>
+              <span className='section-title'>Cor de fundo da sessão</span>
+            </div>
+
+            <div className='col-1 mb-3'>
+              <input
+                id="text-input"
+                type="color"
+                value={profileData.section.background_color}
+                onChange={(e) => handleChange(e, 'section', 'background_color')}
+              />
+            </div>
+
+            <div className='col-12'>
+              <span className='section-title'>Titulo da sessão</span>
+            </div>
+
+            <div className='col-12 mb-3'>
+              <input
+                id="text-input"
+                type="text"
+                placeholder='Título da sessão'
+                value={profileData.section.title}
+                onChange={(e) => handleChange(e, 'section', 'title')}
+              />
+            </div>
+
+            <StyleControls section="section" styleType="style" />
+
+            <hr className='my-4' />
 
             {/* Seção Redes Sociais */}
-            <div className='col-12 my-4'>
+            <div className='col-12 mb-4'>
               <span className='section-title'>Redes sociais</span>
             </div>
 
@@ -219,7 +266,7 @@ const Profile = () => {
               </div>
             </section>
 
-            <hr className='my-4'/>
+            <hr className='my-4' />
 
             {/* Seção Headline */}
             <div className='col-12 mb-4'>
@@ -246,7 +293,7 @@ const Profile = () => {
 
             <StyleControls section="headline" styleType="style" />
 
-            <hr className='my-4'/>
+            <hr className='my-4' />
 
             {/* Seção Contatos */}
             <div className='col-12 mb-4'>

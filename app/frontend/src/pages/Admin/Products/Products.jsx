@@ -5,6 +5,17 @@ import "./Products.scss";
 const Products = () => {
   const [productsData, setProductsData] = useState({
     product1: {
+      section: {
+        title: '',
+        background_color: '#ffff',
+        style: {
+          fontFamily: '',
+          fontSize: '',
+          fontWeight: '',
+          textAlign: '',
+          color: '#000000'
+        }
+      },
       title: '',
       titleStyle: {
         fontFamily: '',
@@ -56,9 +67,9 @@ const Products = () => {
 
   const handleChange = (e, productKey, field, subField = null) => {
     const { name, value } = e.target;
-    
+
     setProductsData(prev => {
-      const newData = {...prev};
+      const newData = { ...prev };
       if (subField) {
         newData[productKey][field][subField] = value;
       } else {
@@ -68,12 +79,13 @@ const Products = () => {
     });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Dados enviados:', productsData);
     // Aqui você pode adicionar a lógica para enviar os dados para o backend
     // Exemplo: api.post('/products', productsData).then(...)
-    
+
     // Adicione também lógica de feedback para o usuário (sucesso/erro)
     alert('Dados dos produtos salvos com sucesso!');
   };
@@ -91,7 +103,128 @@ const Products = () => {
       >
         {/* Produto 1 */}
         <section className='col-12 mb-2'>
-          <div className='row aling-items-center justify-content-start p-3 container-border'>
+          <div
+            className='row aling-items-center justify-content-start p-3 container-border'
+            style={{
+              backgroundColor: productsData.product1.section.background_color
+            }}
+          >
+
+            <div className='col-12'>
+              <span className='section-title'>Cor de fundo da sessão</span>
+            </div>
+
+            <div className='col-1 mb-3'>
+              <input
+                id="text-input"
+                type="color"
+                value={productsData.product1.section.background_color}
+                onChange={(e) => handleChange(e, 'section', 'background_color')}
+              />
+            </div>
+
+            <div className='col-12'>
+              <span className='section-title'>Titulo da sessão</span>
+            </div>
+
+            <div className='col-12 mb-3'>
+              <input
+                id="text-input"
+                type="text"
+                placeholder='Título da sessão'
+                value={productsData.product1.section.title}
+                onChange={(e) => handleChange(e, 'section', 'title')}
+              />
+            </div>
+
+            <section className='row aling-items-center'>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Fonte</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Tamanho</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Grossura</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Alinhamento</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Cor</span>
+              </div>
+            </section>
+
+            <section className='row aling-items-center'>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <select
+                  id="text-input"
+                  name="fontFamily"
+                  value={productsData.product1.titleStyle.fontFamily}
+                  onChange={(e) => handleChange(e, 'product1', 'titleStyle', 'fontFamily')}
+                >
+                  <option value='' disabled>Selecione</option>
+                  {letterFamily.map((item, index) => (
+                    <option key={index} value={item.family}>{item.family}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className='col-md-6 col-lg-2 col-12'>
+                <select
+                  id="text-input"
+                  name="fontSize"
+                  value={productsData.product1.titleStyle.fontSize}
+                  onChange={(e) => handleChange(e, 'product1', 'titleStyle', 'fontSize')}
+                >
+                  <option value='' disabled>Selecione</option>
+                  {letterSeize.map((item, index) => (
+                    <option key={index} value={item.font}>{item.font}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className='col-md-6 col-lg-2 col-12'>
+                <select
+                  id="text-input"
+                  name="fontWeight"
+                  value={productsData.product1.titleStyle.fontWeight}
+                  onChange={(e) => handleChange(e, 'product1', 'titleStyle', 'fontWeight')}
+                >
+                  <option value='' disabled>Selecione</option>
+                  {letterWeight.map((item, index) => (
+                    <option key={index} value={item.weight}>{item.weight}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className='col-md-6 col-lg-2 col-12'>
+                <select
+                  id="text-input"
+                  name="textAlign"
+                  value={productsData.product1.titleStyle.textAlign}
+                  onChange={(e) => handleChange(e, 'product1', 'titleStyle', 'textAlign')}
+                >
+                  <option value='' disabled>Selecione</option>
+                  {letterAlign.map((item, index) => (
+                    <option key={index} value={item.align}>{item.align}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className='col-md-6 col-lg-2 col-12'>
+                <input
+                  id="text-input"
+                  type="color"
+                  name="color"
+                  value={productsData.product1.titleStyle.color}
+                  onChange={(e) => handleChange(e, 'product1', 'titleStyle', 'color')}
+                />
+              </div>
+            </section>
+
+            <hr className='my-4' />
+
             <div className='col-12 my-4'>
               <span className='section-title'>Produto 01</span>
             </div>
@@ -115,6 +248,23 @@ const Products = () => {
             <div className='col-12 py-2'>
               <span className='section-title'>Estilização</span>
             </div>
+            <section className='row aling-items-center'>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Fonte</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Tamanho</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Grossura</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Alinhamento</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Cor</span>
+              </div>
+            </section>
 
             {/* Estilização do título */}
             <section className='row aling-items-center'>
@@ -209,6 +359,24 @@ const Products = () => {
             <div className='col-12 py-2'>
               <span className='section-title'>Estilização</span>
             </div>
+
+            <section className='row aling-items-center'>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Fonte</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Tamanho</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Grossura</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Alinhamento</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Cor</span>
+              </div>
+            </section>
 
             {/* Estilização dos detalhes */}
             <div className='row aling-items-center'>
@@ -365,7 +533,13 @@ const Products = () => {
 
         {/* Produto 2 */}
         <section className='col-12 mb-2'>
-          <div className='row aling-items-center justify-content-start p-3 container-border'>
+          <div
+            className='row aling-items-center justify-content-start p-3 container-border'
+            style={{
+              backgroundColor: productsData.product1.section.background_color
+            }}
+          >
+
             <div className='col-12 my-4'>
               <span className='section-title'>Produto 02</span>
             </div>
@@ -389,6 +563,24 @@ const Products = () => {
             <div className='col-12 py-2'>
               <span className='section-title'>Estilização</span>
             </div>
+
+            <section className='row aling-items-center'>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Fonte</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Tamanho</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Grossura</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Alinhamento</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Cor</span>
+              </div>
+            </section>
 
             {/* Estilização do título */}
             <section className='row aling-items-center'>
@@ -483,6 +675,24 @@ const Products = () => {
             <div className='col-12 py-2'>
               <span className='section-title'>Estilização</span>
             </div>
+
+            <section className='row aling-items-center'>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Fonte</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Tamanho</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Grossura</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Alinhamento</span>
+              </div>
+              <div className='col-md-6 col-lg-2 col-12'>
+                <span className='input-title'>Cor</span>
+              </div>
+            </section>
 
             {/* Estilização dos detalhes */}
             <div className='row aling-items-center'>

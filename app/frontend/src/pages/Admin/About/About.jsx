@@ -4,6 +4,17 @@ import "./About.scss";
 
 const About = () => {
   const [aboutData, setAboutData] = useState({
+    section: {
+      title: '',
+      background_color: '#ffff',
+      style: {
+        fontFamily: '',
+        fontSize: '',
+        fontWeight: '',
+        textAlign: '',
+        color: '#000000'
+      }
+    },
     headline: {
       title: '',
       style: {
@@ -36,10 +47,10 @@ const About = () => {
 
   const handleChange = (e, section, subSection = null, styleType = null) => {
     const { name, value } = e.target;
-    
+
     setAboutData(prev => {
-      const newData = {...prev};
-      
+      const newData = { ...prev };
+
       if (styleType) {
         newData[section][subSection][styleType] = value;
       } else if (subSection) {
@@ -47,7 +58,7 @@ const About = () => {
       } else {
         newData[section][name] = value;
       }
-      
+
       return newData;
     });
   };
@@ -93,7 +104,7 @@ const About = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -106,7 +117,7 @@ const About = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -119,7 +130,7 @@ const About = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <select
             id="text-input"
@@ -132,7 +143,7 @@ const About = () => {
             ))}
           </select>
         </div>
-        
+
         <div className='col-md-6 col-lg-2 col-12'>
           <input
             id="text-input"
@@ -153,7 +164,43 @@ const About = () => {
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
       >
         <section className='col-12'>
-          <div className='row aling-items-center justify-content-start p-3 container-border'>
+          <div
+            className='row aling-items-center justify-content-start p-3 container-border'
+            style={{
+              backgroundColor: aboutData.section.background_color
+            }}
+          >
+
+            <div className='col-12'>
+              <span className='section-title'>Cor de fundo da sessão</span>
+            </div>
+
+            <div className='col-1 mb-3'>
+              <input
+                id="text-input"
+                type="color"
+                value={aboutData.section.background_color}
+                onChange={(e) => handleChange(e, 'section', 'background_color')}
+              />
+            </div>
+
+            <div className='col-12'>
+              <span className='section-title'>Titulo da sessão</span>
+            </div>
+
+            <div className='col-12 mb-3'>
+              <input
+                id="text-input"
+                type="text"
+                placeholder='Título da sessão'
+                value={aboutData.section.title}
+                onChange={(e) => handleChange(e, 'section', 'title')}
+              />
+            </div>
+
+            <StyleControls section="section" styleType="style" />
+
+            <hr className='my-4' />
 
             {/* Seção Ilustração */}
             <div className='col-12 mb-4'>
@@ -227,7 +274,7 @@ const About = () => {
               </div>
             </div>
 
-            <hr className='my-4'/>
+            <hr className='my-4' />
 
             {/* Seção Headline */}
             <div className='col-12 my-4'>
@@ -254,7 +301,7 @@ const About = () => {
 
             <StyleControls section="headline" styleType="style" />
 
-            <hr className='my-4'/>
+            <hr className='my-4' />
 
             {/* Seção Subtítulo */}
             <div className='col-12 pb-4'>
