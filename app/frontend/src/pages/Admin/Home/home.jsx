@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { letterAlign, letterFamily, letterSeize, letterWeight } from '../Mocks/Estilization';
 import "./home.scss";
+import { dbClient } from "../../../services/db";
 
 const AdminHome = () => {
   const [homeData, setHomeData] = useState({
@@ -40,6 +41,22 @@ const AdminHome = () => {
     }
   });
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    const { data1, error } = await dbClient.from('user').select();
+    if (error) {
+      console.error('Error fetching data:', error);
+    } else {
+      setData(data1);
+      console.log(data1);
+    }
+  }
+  
   const handleChange = (e, section, subSection = null, styleType = null) => {
     const { name, value } = e.target;
 
