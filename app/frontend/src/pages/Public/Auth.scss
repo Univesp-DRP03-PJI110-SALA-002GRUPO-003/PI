@@ -1,0 +1,83 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+
+    .card {
+      border-radius: 10px;
+      border: none;
+
+      .card-body {
+        padding: 2rem;
+
+        .card-title {
+          color: #333;
+          font-weight: 600;
+        }
+
+        .form-label {
+          font-weight: 500;
+        }
+
+        .password-input {
+          .input-group {
+            .btn {
+              &:focus {
+                box-shadow: none;
+              }
+            }
+          }
+        }
+
+        .btn-primary {
+          background-color: #0d6efd;
+          border: none;
+          padding: 10px;
+          font-weight: 500;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: darken(#0d6efd, 10%);
+          }
+        }
+
+        .form-check-input {
+          &:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+          }
+        }
+      }
+    }
+  }
+}
+
+.icon-btn {
+  &:hover {
+    background-color: #e1e1e1 !important; 
+  }
+}
+
+.auth-icon {
+  font-size: 16px;
+  color: #0d6efd;
+
+  &:hover {
+    color: darken(#0d6efd, 10%);
+  }
+}
+
+.back-link {
+  color: #0d6efd;
+
+  &:hover {
+    color: darken(#0d6efd, 30%);
+  }
+}
