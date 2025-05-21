@@ -80,7 +80,7 @@ const Auth = () => {
               <button type="submit" className="btn btn-primary w-100">Entrar</button>
             </form>
 
-            <a className="back-link mt-2" href="/app">Voltar</a>
+            <a className="back-link mt-2" onClick={() => navigate('/')}>Voltar</a>
           </div>
         </div>
       </div>
