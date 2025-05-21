@@ -14,7 +14,7 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Routes>
         {/* Rota pública - apenas /app */}
-        <Route path="/app" element={
+        <Route path="/" element={
           <PublicRoute>
             <Site />
           </PublicRoute>
@@ -37,7 +37,7 @@ export default function AppRoutes() {
         </Route>
 
         {/* Redirecionamento para /app como fallback */}
-        <Route path="*" element={<Navigate to="/app" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

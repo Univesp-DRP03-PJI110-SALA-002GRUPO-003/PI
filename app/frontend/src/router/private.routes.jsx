@@ -1,8 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 const isAuthenticated = () => {
-  // return Boolean(localStorage.getItem('token'))
-  return true;
+  return Boolean(localStorage.getItem('token'));
 };
 
 const PrivateRoutes = () => {
