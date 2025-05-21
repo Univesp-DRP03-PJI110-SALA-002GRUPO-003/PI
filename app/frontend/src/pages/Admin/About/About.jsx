@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { letterAlign, letterFamily, letterSeize, letterWeight } from '../Mocks/Estilization';
 import "./About.scss";
+import { dbClient } from "../../../services/db";
 
 const About = () => {
   const [aboutData, setAboutData] = useState({
@@ -63,12 +64,50 @@ const About = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Dados sobre:', aboutData);
-    // Adicione aqui a lógica para enviar os dados
-    alert('Informações sobre salvas com sucesso!');
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log('Dados da home:', aboutData);
+      // Adicione aqui a lógica para enviar os dados
+      const formattedAbout = JSON.stringify(aboutData);
+      console.log(formattedAbout);
+  
+      const response = await dbClient.from('page')
+        .update({
+          content: formattedAbout
+        })
+        .eq('id_user', 1)
+        .eq('page_name', 'about')
+  
+      if (response.error) {
+        console.error();
+      } else {
+  
+        console.log(response.data);
+        alert('Configurações da About salvas com sucesso!');
+        return response.data;
+      }
+    };
+
+      useEffect(() => {
+        const fetch = async () => {
+          const response = await dbClient.from('page')
+            .select('content')
+            .eq('id_user', 1)
+            .eq('page_name', 'about')
+    
+          if (response.error) {
+            console.error();
+          } else {
+    
+            const formattedAbout = JSON.parse(response.data[0].content);
+            console.log(formattedAbout);
+            return setAboutData(formattedAbout);
+          }
+        }
+    
+        fetch();
+      }, []);
+
 
   // Componente reutilizável para controles de estilo
   const StyleControls = ({ section, styleType }) => (

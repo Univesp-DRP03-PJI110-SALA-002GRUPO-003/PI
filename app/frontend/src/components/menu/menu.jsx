@@ -14,8 +14,13 @@ const Menu = () => {
     { id: 2, text: "Sobre", onClick: () => navigate("/admin_about") },
     { id: 3, text: "Produtos", onClick: () => navigate("/admin_products") },
     { id: 4, text: "Perfil", onClick: () => navigate(`/admin_profile`) },
-    { id: 5, text: "Sair", onClick: () => navigate("/") },
+    { id: 5, text: "Sair", onClick: () => logout() }
   ];
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   const toggleProfile = () => {
     setIsOpen(!isOpen);
@@ -43,7 +48,7 @@ const Menu = () => {
     <div className="btn dropdown" ref={dropdownRef}>
       <button className="dropdown-toggle" onClick={toggleProfile}>
         <div className="dropdown-text-container">
-          <p className="dropdown-title">{user?.name || "Usuário"}</p>
+          <p className="dropdown-title">Menu</p>
         </div>
         {/* <i className={`icon-chevron-down chevron ${isOpen ? "expanded" : ""}`}></i> */}
       </button>

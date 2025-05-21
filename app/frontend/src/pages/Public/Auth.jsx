@@ -1,15 +1,40 @@
 import React, { useState } from 'react';
 import './Auth.scss';
+import { dbClient } from "../../services/db";
+import { useNavigate } from 'react-router-dom';
+
 
 const Auth = () => {
+
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Adicione sua lógica de autenticação aqui
-    console.log({ username, password, rememberMe });
+
+    const response = await dbClient.from('user')
+      .select('password')
+      .eq('id', 1)
+      // eq('username', username)
+
+    if (response.error) {
+      console.error();
+    } else {
+
+      if (response.data[0].password !== password) {
+        return alert('Senha incorreta!');
+      } else {
+
+        localStorage.setItem('token', true);
+        alert('Login realizado com sucesso!');
+        return navigate('/admin_home');
+      }
+      console.log(response.data);
+      return response.data;
+    }
   };
 
   return (

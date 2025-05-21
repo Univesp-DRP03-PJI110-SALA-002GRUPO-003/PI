@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { letterAlign, letterFamily, letterSeize, letterWeight } from '../Mocks/Estilization';
 import "./Profile.scss";
+import { dbClient } from "../../../services/db";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -66,12 +67,50 @@ const Profile = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Dados do perfil:', profileData);
-    // Adicione aqui a lógica para enviar os dados
-    alert('Perfil salvo com sucesso!');
-  };
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log('Dados da home:', profileData);
+      // Adicione aqui a lógica para enviar os dados
+      const formattedProfile = JSON.stringify(profileData);
+      console.log(formattedProfile);
+  
+      const response = await dbClient.from('page')
+        .update({
+          content: formattedProfile
+        })
+        .eq('id_user', 1)
+        .eq('page_name', 'profile')
+  
+      if (response.error) {
+        console.error();
+      } else {
+  
+        console.log(response.data);
+        alert('Configurações do perfil salvas com sucesso!');
+        return response.data;
+      }
+    };
+
+      useEffect(() => {
+        const fetch = async () => {
+          const response = await dbClient.from('page')
+            .select('content')
+            .eq('id_user', 1)
+            .eq('page_name', 'profile')
+    
+          if (response.error) {
+            console.error();
+          } else {
+    
+            const formattedProfile = JSON.parse(response.data[0].content);
+            console.log(formattedProfile);
+            return setProfileData(formattedProfile);
+          }
+        }
+    
+        fetch();
+      }, []);
+
 
   // Componente reutilizável para controles de estilo
   const StyleControls = ({ section, styleType }) => (

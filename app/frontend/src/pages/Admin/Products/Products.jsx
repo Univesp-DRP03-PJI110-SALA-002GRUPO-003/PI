@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { letterAlign, letterFamily, letterSeize, letterWeight } from '../Mocks/Estilization';
 import "./Products.scss";
+import { dbClient } from "../../../services/db";
 
 const Products = () => {
   const [productsData, setProductsData] = useState({
@@ -79,16 +80,50 @@ const Products = () => {
     });
   };
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados enviados:', productsData);
-    // Aqui você pode adicionar a lógica para enviar os dados para o backend
-    // Exemplo: api.post('/products', productsData).then(...)
+    console.log('Dados da home:', productsData);
+    // Adicione aqui a lógica para enviar os dados
+    const formattedProducts = JSON.stringify(productsData);
+    console.log(formattedProducts);
 
-    // Adicione também lógica de feedback para o usuário (sucesso/erro)
-    alert('Dados dos produtos salvos com sucesso!');
+    const response = await dbClient.from('page')
+      .update({
+        content: formattedProducts
+      })
+      .eq('id_user', 1)
+      .eq('page_name', 'products')
+
+    if (response.error) {
+      console.error();
+    } else {
+
+      console.log(response.data);
+      alert('Configurações de Produtos salvas com sucesso!');
+      return response.data;
+    }
   };
+
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await dbClient.from('page')
+        .select('content')
+        .eq('id_user', 1)
+        .eq('page_name', 'products')
+
+      if (response.error) {
+        console.error();
+      } else {
+
+        const formattedProducts = JSON.parse(response.data[0].content);
+        console.log(formattedProducts);
+        return setProductsData(formattedProducts);
+      }
+    }
+
+    fetch();
+  }, []);
+
 
   return (
     <div id="admin-products" className="admin-content container">
@@ -104,11 +139,12 @@ const Products = () => {
         {/* Produto 1 */}
         <section className='col-12 mb-2'>
           <div
-            className='row aling-items-center justify-content-start p-3 container-border'
+            className='row align-items-center justify-content-start p-3 container-border'
             style={{
-              backgroundColor: productsData.product1.section.background_color
+              backgroundColor: productsData.product1.section.background_color ?? '#ffff'
             }}
           >
+
 
             <div className='col-12'>
               <span className='section-title'>Cor de fundo da sessão</span>
@@ -119,7 +155,7 @@ const Products = () => {
                 id="text-input"
                 type="color"
                 value={productsData.product1.section.background_color}
-                onChange={(e) => handleChange(e, 'section', 'background_color')}
+                onChange={(e) => handleChange(e, 'product1', 'section', 'background_color')}
               />
             </div>
 
@@ -133,7 +169,7 @@ const Products = () => {
                 type="text"
                 placeholder='Título da sessão'
                 value={productsData.product1.section.title}
-                onChange={(e) => handleChange(e, 'section', 'title')}
+                onChange={(e) => handleChange(e, 'product1', 'section', 'title')}
               />
             </div>
 
